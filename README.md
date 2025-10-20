@@ -79,6 +79,10 @@ Funções auxiliares globais carregadas via autoload de `files` (ex.: `toRespons
 **src/routes.php**  
 Declaração das rotas do Slim (ex.: `GET /ping`). Mantém o `index.php` mais limpo e facilita evolução do roteamento.
 
+## 🧠 Observações
+- O modo clássico recompila o PHP a cada requisição, ideal para desenvolvimento local (auto-reload sem watcher).
+- Ao modificar o código, basta recarregar o navegador ou repetir a requisição para ver as alterações.
+
 ## Autor
 Gercil Junio - Desenvolvedor Backend
 
