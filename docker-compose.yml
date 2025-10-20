@@ -1,0 +1,18 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: DockerfileContainer
+    restart: always
+    image: gerciljunio/slim-frankenphp-classic-mode
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./:/app       # hot-reload do código em dev
+      - caddy_data:/data
+      - caddy_config:/config
+    tty: true         # logs legíveis no terminal (dev)
+
+volumes:
+  caddy_data:
+  caddy_config:

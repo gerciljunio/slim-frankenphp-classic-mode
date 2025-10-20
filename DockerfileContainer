@@ -1,0 +1,23 @@
+#===
+# Utiliza o composer e vendor dentro do container docker e NÃO localmente
+#===
+
+# Etapa 1: instalar dependências com Composer
+FROM composer:2 AS vendor
+WORKDIR /app
+COPY composer.json ./
+RUN composer install --no-dev --no-interaction --no-progress --prefer-dist
+COPY . .
+RUN composer dump-autoload --optimize
+
+# Etapa 2: runtime FrankenPHP
+FROM dunglas/frankenphp:latest
+WORKDIR /app
+
+# Servir em porta não privilegiada dentro do container
+ENV SERVER_NAME=":8081"
+
+# Copia tudo (inclui vendor da etapa anterior)
+COPY --from=vendor /app /app
+
+EXPOSE 8081

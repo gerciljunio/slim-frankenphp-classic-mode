@@ -1,0 +1,12 @@
+#===
+# Utiliza o composer e vendor dentro da máquina local e NÃO dentro do container
+#===
+
+# runtime FrankenPHP
+FROM dunglas/frankenphp:latest
+WORKDIR /app
+
+# Servir em porta não privilegiada dentro do container
+ENV SERVER_NAME=":8081"
+
+EXPOSE 8081
