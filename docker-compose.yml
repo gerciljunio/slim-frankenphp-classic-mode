@@ -2,7 +2,7 @@ services:
   app:
     build: 
       context: .
-      dockerfile: DockerfileContainer
+      dockerfile: DockerfileLocal
     restart: always
     image: gerciljunio/slim-frankenphp-classic-mode
     ports:
